@@ -1,6 +1,9 @@
 import type { AppProps } from 'next/app';
 import { ThirdwebProvider } from '@3rdweb/react';
 import 'tailwindcss/tailwind.css';
+import '@fontsource/montserrat/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/700.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
