@@ -5,17 +5,25 @@ import CodeMirror from '@uiw/react-codemirror';
 import { html } from '@codemirror/lang-html';
 import { css } from '@codemirror/lang-css';
 import { javascript } from '@codemirror/lang-javascript';
-import { useEffect, useState } from 'react';
-
-type CodeSnippet = {
-  html: string;
-  css: string;
-  js: string;
-};
+import { useEffect, useRef } from 'react';
+import { codeStore, setCode, setSnippet, snippetStore } from '@stores/playground';
+import { useStore } from '@nanostores/react';
 
 const NewPage: NextPage = () => {
-  const [code, setCode] = useState<CodeSnippet>({ html: '', css: '', js: '' });
-  const [codeSnippet, setCodeSnippet] = useState('');
+  const code = useStore(codeStore);
+  const snippet = useStore(snippetStore);
+  const frameRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    if (frameRef.current) {
+      const frame = frameRef.current;
+      const doc = frame.contentDocument;
+
+      doc?.open()
+      doc?.write(snippet);
+      doc?.close();
+    }
+  }, [snippet, frameRef]);
 
   useEffect(() => {
     const codeSnippet = `
@@ -36,8 +44,8 @@ const NewPage: NextPage = () => {
         </script>
       </body>
     `;
-    setCodeSnippet(codeSnippet);
-  }, [code, setCode])
+    setSnippet(codeSnippet);
+  }, [code])
 
   return (
     <div className="h-screen w-full overflow-hidden bg-slate-900 text-white">
@@ -78,7 +86,7 @@ const NewPage: NextPage = () => {
         </div>
         <div className="h-3/5 bg-white">
           <iframe
-            srcDoc={codeSnippet}
+            ref={frameRef}
             frameBorder="0"
             className="h-full w-full"
           ></iframe>
