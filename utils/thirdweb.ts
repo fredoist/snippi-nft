@@ -9,7 +9,7 @@ const sdk = new ThirdwebSDK(
 );
 
 const nftCollection = sdk.getNFTModule(
-  process.env.NFT_COLLECTION_ADDRESS_TEST as string
+  process.env.NFT_COLLECTION_ADDRESS as string
 );
 
 export { sdk, nftCollection };
