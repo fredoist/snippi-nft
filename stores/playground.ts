@@ -25,3 +25,4 @@ const setSnippet = (snippet: string) => {
 };
 
 export { codeStore, setCode, snippetStore, setSnippet };
+export type { Snippet };

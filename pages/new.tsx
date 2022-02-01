@@ -13,6 +13,7 @@ import {
   snippetStore,
 } from '@stores/playground';
 import { useStore } from '@nanostores/react';
+import { generateSnippet } from '@utils/generateSnippet';
 
 const NewPage: NextPage = () => {
   const code = useStore(codeStore);
@@ -31,24 +32,7 @@ const NewPage: NextPage = () => {
   }, [snippet, frameRef]);
 
   useEffect(() => {
-    const codeSnippet = `
-     <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>New NFT</title>
-        <style>
-          ${code.css}
-        </style>
-      </head>
-      <body>
-        ${code.html}
-        <script>
-          ${code.js}
-        </script>
-      </body>
-    `;
+    const codeSnippet = generateSnippet('New NFT', code);
     setSnippet(codeSnippet);
   }, [code]);
 
