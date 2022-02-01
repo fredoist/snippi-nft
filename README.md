@@ -87,23 +87,23 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Freddy González - [@fredoist](https://twitter.com/fredoist)
 
 Project Link:
-[https://github.com/fredoist/typiform](https://github.com/fredoist/typiform)
+[https://github.com/fredoist/snippi-nft](https://github.com/fredoist/snippi-nft)
 
 [contributors-shield]:
-  https://img.shields.io/github/contributors/fredoist/typiform.svg?style=for-the-badge
-[contributors-url]: https://github.com/fredoist/typiform/graphs/contributors
+  https://img.shields.io/github/contributors/fredoist/snippi-nft.svg?style=for-the-badge
+[contributors-url]: https://github.com/fredoist/snippi-nft/graphs/contributors
 [forks-shield]:
-  https://img.shields.io/github/forks/fredoist/typiform.svg?style=for-the-badge
-[forks-url]: https://github.com/fredoist/typiform/network/members
+  https://img.shields.io/github/forks/fredoist/snippi-nft.svg?style=for-the-badge
+[forks-url]: https://github.com/fredoist/snippi-nft/network/members
 [stars-shield]:
-  https://img.shields.io/github/stars/fredoist/typiform.svg?style=for-the-badge
-[stars-url]: https://github.com/fredoist/typiform/stargazers
+  https://img.shields.io/github/stars/fredoist/snippi-nft.svg?style=for-the-badge
+[stars-url]: https://github.com/fredoist/snippi-nft/stargazers
 [issues-shield]:
-  https://img.shields.io/github/issues/fredoist/typiform.svg?style=for-the-badge
-[issues-url]: https://github.com/fredoist/typiform/issues
+  https://img.shields.io/github/issues/fredoist/snippi-nft.svg?style=for-the-badge
+[issues-url]: https://github.com/fredoist/snippi-nft/issues
 [license-shield]:
-  https://img.shields.io/github/license/fredoist/typiform.svg?style=for-the-badge
-[license-url]: https://github.com/fredoist/typiform/blob/master/LICENSE.txt
+  https://img.shields.io/github/license/fredoist/snippi-nft.svg?style=for-the-badge
+[license-url]: https://github.com/fredoist/snippi-nft/blob/master/LICENSE.txt
 [linkedin-shield]:
   https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/fredoist
