@@ -1,9 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import Image from 'next/image';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
-import Link from 'next/link';
-import { ArrowRightIcon } from '@heroicons/react/outline';
 import { nftCollection } from '@utils/thirdweb';
 import { NFT, NFTCard } from '@components/NFTCard';
 import { NFTMetadata } from '@3rdweb/sdk';
