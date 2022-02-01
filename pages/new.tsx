@@ -6,7 +6,12 @@ import { html } from '@codemirror/lang-html';
 import { css } from '@codemirror/lang-css';
 import { javascript } from '@codemirror/lang-javascript';
 import { useEffect, useRef } from 'react';
-import { codeStore, setCode, setSnippet, snippetStore } from '@stores/playground';
+import {
+  codeStore,
+  setCode,
+  setSnippet,
+  snippetStore,
+} from '@stores/playground';
 import { useStore } from '@nanostores/react';
 
 const NewPage: NextPage = () => {
@@ -19,7 +24,7 @@ const NewPage: NextPage = () => {
       const frame = frameRef.current;
       const doc = frame.contentDocument;
 
-      doc?.open()
+      doc?.open();
       doc?.write(snippet);
       doc?.close();
     }
@@ -45,14 +50,18 @@ const NewPage: NextPage = () => {
       </body>
     `;
     setSnippet(codeSnippet);
-  }, [code])
+  }, [code]);
 
   return (
     <div className="h-screen w-full overflow-hidden bg-slate-900 text-white">
       <SEO title="New NFT" />
       <Navbar />
-      <main role="main" className="container mx-auto" style={{ height: 'calc(100% - 70px)' }}>
-        <div className="h-2/5 flex border-b-8 border-b-cyan-600/10 z-40">
+      <main
+        role="main"
+        className="container mx-auto"
+        style={{ height: 'calc(100% - 70px)' }}
+      >
+        <div className="z-40 flex h-2/5 border-b-8 border-b-cyan-600/10">
           <CodeMirror
             value={code.html}
             placeholder="HTML"
