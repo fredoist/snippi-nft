@@ -7,17 +7,20 @@
 <br />
 <p align="center">
   <img src="public/assets/img/logo.svg" alt="Snippi NFTs" width="200px">
-  <h3 align="center">Snippi NFTs</h3>
-  <p algin="center">An NFT collection and frontend code playground to mint code snippets as NFTs.</p>
+</p>
 
+<h3 align="center">Snippi NFTs</h3>
+<p align="center">An NFT collection and frontend code playground to mint code snippets as NFTs.</p>
+
+<p align="center">
   <br />
-  <a href="https://fredoist.hashnode.dev/snippi-nfts-the-interactive-nft-collection-for-frontend-developers"><strong>The Making Of</strong></a>
+  <a href="https://fredoist.hashnode.dev/snippi-nfts-the-interactive-nft-collection-for-frontend-developers"><strong>The Making Of Snippi NFTs</strong></a>
   <br />
   <br />
   <a href="https://snippi-nft.vercel.app">View Demo</a>
-  ·
+  ⁕
   <a href="https://github.com/fredoist/snippi-nft/issues">Report Bug</a>
-  ·
+  ⁕
   <a href="https://github.com/fredoist/snippi-nft/issues">Request Feature</a>
 </p>
 
@@ -27,14 +30,14 @@
 <br />
 Snippi NTFs is a collection of interactive NFTs that you can create with code. It's a custom web app built with Next.js that integrates a frontend code playground where you can build interactive NFTs. The generated HTML file then gets minted to the blockchain of Polygon Network and is rendered in the web app using iframes.
 
-# Built with
+# :building_construction: Built with
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Thirdweb](https://img.shields.io/badge/-thirdweb%20platform-white?&style=for-the-badge)
 
-### Installation
+### :bricks: Installation
 
 1. Clone the repo
    ```sh
@@ -48,7 +51,7 @@ Snippi NTFs is a collection of interactive NFTs that you can create with code. I
 
 4. Run your local dev server by running `npm run dev`
 
-# Screenshots
+# :camera_flash: Screenshots
 
 <p align="center">
 
@@ -59,7 +62,7 @@ Snippi NTFs is a collection of interactive NFTs that you can create with code. I
 
 </p>
 
-## Contributing
+## :bug: Contributing
 
 Contributions are what make the open source community such an amazing place to
 learn, inspire, and create. Any contributions you make are **greatly
@@ -73,7 +76,7 @@ appreciated**.
 
 <!-- LICENSE -->
 
-## License
+## :page_facing_up: License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
