@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Buffer } from 'buffer';
 import { nftCollection } from '@utils/thirdweb';
-import nodeHtmlToImage from 'node-html-to-image';
 import { generateSnippet } from '@utils/generateSnippet';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -18,17 +16,22 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const snippet = generateSnippet(name, code);
 
-  const file = new Buffer(snippet, 'utf-8');
-  const image = await nodeHtmlToImage({
-    html: snippet,
-  });
+  const file = Buffer.from(snippet);
+  /**
+   * ToDo: find a way to convert the html string to image
+   * vercel and netlify don't support puppeter so librearies are useless
+   */
+  // import nodeHtmlToImage from 'node-html-to-image';
+  // const image = await nodeHtmlToImage({
+  //   html: snippet,
+  // });
 
   return new Promise<void>((resolve) => {
     nftCollection
       .mintTo(address, {
         name,
         description,
-        image,
+        // image,
         file,
       })
       .then((data) => {
