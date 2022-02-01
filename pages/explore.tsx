@@ -8,7 +8,7 @@ import { nftCollection } from '@utils/thirdweb';
 import { NFT, NFTCard } from '@components/NFTCard';
 import { NFTMetadata } from '@3rdweb/sdk';
 
-const IndexPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
+const ExplorePage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
   return (
     <div className="min-h-screen w-full bg-slate-900 text-white">
       <SEO
@@ -39,4 +39,4 @@ export const getServerSideProps: GetServerSideProps<{
   };
 };
 
-export default IndexPage;
+export default ExplorePage;
