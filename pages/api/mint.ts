@@ -18,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const snippet = generateSnippet(name, code);
 
-  const file = new Buffer(snippet, 'utf-8');
+  const file = Buffer.from(snippet, 'utf-8');
   const image = await nodeHtmlToImage({
     html: snippet,
   });
