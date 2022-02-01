@@ -10,7 +10,7 @@ const NFTCard = (nft: NFT) => {
   return (
     <Link href="/s" as={`/s/${nft.id}`}>
       <a className="cursor-pointer">
-        <div className="h-96 w-full overflow-hidden rounded-xl border border-sky-400/10 bg-slate-800/50 shadow-xl shadow-slate-800/10 backdrop-blur-md">
+        <div className="h-96 w-full overflow-hidden rounded-xl border border-sky-400/10 bg-slate-800/50 shadow-xl shadow-slate-800/10 backdrop-blur-md transition hover:-translate-y-1 hover:bg-slate-800/90">
           <iframe
             src={IPFSToURI(nft.file)}
             scrolling="no"
