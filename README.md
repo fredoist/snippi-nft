@@ -1,6 +1,5 @@
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
+[![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
@@ -50,6 +49,7 @@ Snippi NTFs is a collection of interactive NFTs that you can create with code. I
 4. Run your local dev server by running `npm run dev`
 
 # Screenshots
+
 <p align="center">
 
 ![Home Page](.github/screenshots/home_page.png)
@@ -61,7 +61,9 @@ Snippi NTFs is a collection of interactive NFTs that you can create with code. I
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to
+learn, inspire, and create. Any contributions you make are **greatly
+appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -81,17 +83,24 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Freddy González - [@fredoist](https://twitter.com/fredoist)
 
-Project Link: [https://github.com/fredoist/typiform](https://github.com/fredoist/typiform)
+Project Link:
+[https://github.com/fredoist/typiform](https://github.com/fredoist/typiform)
 
-[contributors-shield]: https://img.shields.io/github/contributors/fredoist/typiform.svg?style=for-the-badge
+[contributors-shield]:
+  https://img.shields.io/github/contributors/fredoist/typiform.svg?style=for-the-badge
 [contributors-url]: https://github.com/fredoist/typiform/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/fredoist/typiform.svg?style=for-the-badge
+[forks-shield]:
+  https://img.shields.io/github/forks/fredoist/typiform.svg?style=for-the-badge
 [forks-url]: https://github.com/fredoist/typiform/network/members
-[stars-shield]: https://img.shields.io/github/stars/fredoist/typiform.svg?style=for-the-badge
+[stars-shield]:
+  https://img.shields.io/github/stars/fredoist/typiform.svg?style=for-the-badge
 [stars-url]: https://github.com/fredoist/typiform/stargazers
-[issues-shield]: https://img.shields.io/github/issues/fredoist/typiform.svg?style=for-the-badge
+[issues-shield]:
+  https://img.shields.io/github/issues/fredoist/typiform.svg?style=for-the-badge
 [issues-url]: https://github.com/fredoist/typiform/issues
-[license-shield]: https://img.shields.io/github/license/fredoist/typiform.svg?style=for-the-badge
+[license-shield]:
+  https://img.shields.io/github/license/fredoist/typiform.svg?style=for-the-badge
 [license-url]: https://github.com/fredoist/typiform/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-shield]:
+  https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/fredoist

@@ -33,7 +33,7 @@ const SnippetPage: NextPage<NFT> = ({
       >
         <div className="mx-auto my-24 w-full max-w-6xl text-center">
           <div className="mb-12">
-            <h1 className="mb-6 text-6xl font-bold">{name}</h1>
+            <h1 className="mb-6 font-serif text-6xl font-bold">{name}</h1>
             <p className="mb-5">{description}</p>
             <Link href="/user" as={`/user/${owner}`}>
               <a className="inline-block rounded-full bg-sky-700/50 py-2 px-5 text-sm font-bold leading-none text-white transition-colors hover:bg-sky-600/50">

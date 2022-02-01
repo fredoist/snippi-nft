@@ -36,7 +36,7 @@ const IndexPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
           </div>
         </div>
         <div className="z-40 mx-auto my-24 max-w-5xl text-center">
-          <h1 className="mb-12 text-7xl font-bold leading-none">
+          <h1 className="mb-12 font-serif text-7xl font-bold leading-none">
             The interactive NFT collection for frontend developers
           </h1>
           <p className="mb-5">
