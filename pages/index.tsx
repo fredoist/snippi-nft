@@ -1,11 +1,14 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Image from 'next/image';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
 import Link from 'next/link';
 import { ArrowRightIcon } from '@heroicons/react/outline';
+import { nftCollection } from '@utils/thirdweb';
+import { NFT, NFTCard } from '@components/NFTCard';
+import { NFTMetadata } from '@3rdweb/sdk';
 
-const IndexPage: NextPage = () => {
+const IndexPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
   return (
     <div className="min-h-screen w-full bg-slate-900 text-white">
       <SEO
@@ -47,9 +50,25 @@ const IndexPage: NextPage = () => {
             </a>
           </Link>
         </div>
+        <div className="mx-auto grid max-w-7xl grid-cols-3 gap-6 pb-24 pt-12">
+          {nfts.length > 0 &&
+            nfts
+              .slice(0, 3)
+              .map((nft: NFT) => <NFTCard key={nft.id} {...nft} />)}
+        </div>
       </main>
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps<{
+  nfts: NFTMetadata[];
+}> = async () => {
+  const nfts = await nftCollection.getAll();
+
+  return {
+    props: { nfts },
+  };
 };
 
 export default IndexPage;
