@@ -14,6 +14,7 @@ const SEO = ({ title, description, image }: SEOProps) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>{title} — Snippi NFTs</title>
       <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+      <link rel="preconnect" href="https://ipfs.io" />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
       <meta property="og:title" content={title} />

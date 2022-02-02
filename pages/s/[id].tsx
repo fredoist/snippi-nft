@@ -44,6 +44,9 @@ const SnippetPage: NextPage<NFT> = ({
           </div>
           <iframe
             src={IPFSToURI(file)}
+            title={name}
+            loading="lazy"
+            scrolling="no"
             frameBorder="0"
             className="min-h-[600px] w-full overflow-hidden rounded-xl"
           ></iframe>
