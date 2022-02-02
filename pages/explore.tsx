@@ -15,7 +15,9 @@ const ExplorePage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
       <Navbar />
       <main role="main" className="group">
         <div className="mx-auto max-w-7xl py-12">
-          <h1 className="text-5xl font-bold">Explore NFT Collection</h1>
+          <h1 className="font-serif text-5xl font-bold">
+            Explore NFT Collection
+          </h1>
         </div>
         <div className="mx-auto grid max-w-7xl grid-cols-3 gap-6 pb-24 pt-12">
           {nfts.length > 0 &&
