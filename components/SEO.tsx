@@ -19,6 +19,11 @@ const SEO = ({ title, description, image }: SEOProps) => {
       <meta name="image" content={image} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
+      <script
+        async
+        id="bannernotesdk"
+        src="https://app.bannernote.com/sdk/sdk.js?apiKey=c0d030cfa7144751aba9160f0565ae32"
+      />
     </Head>
   );
 };
