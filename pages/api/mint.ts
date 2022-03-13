@@ -15,31 +15,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const snippet = generateSnippet(name, code);
-
   const file = Buffer.from(snippet);
-  /**
-   * ToDo: find a way to convert the html string to image
-   * vercel and netlify don't support puppeter so librearies are useless
-   */
-  // import nodeHtmlToImage from 'node-html-to-image';
-  // const image = await nodeHtmlToImage({
-  //   html: snippet,
-  // });
 
-  return new Promise<void>((resolve) => {
-    nftCollection
-      .mintTo(address, {
-        name,
-        description,
-        // image,
-        file,
-      })
-      .then((data) => {
-        res.status(200).json(data);
-        console.log('New NFT data ->', data);
-        resolve();
-      });
-  });
+  try {
+    const data = await nftCollection.mintTo(address, {
+      name,
+      description,
+      file,
+    });
+    res.status(200).json(data);
+    return;
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error });
+    return;
+  }
 };
 
 export default handler;

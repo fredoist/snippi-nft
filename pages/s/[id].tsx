@@ -2,7 +2,6 @@ import type { GetServerSideProps, NextPage } from 'next';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
 import { nftCollection } from '@utils/thirdweb';
-import { NFTMetadata, NFTMetadataOwner } from '@3rdweb/sdk';
 import { IPFSToURI } from '@utils/IPFSToURI';
 import Link from 'next/link';
 import { UserIcon } from '@heroicons/react/outline';
@@ -56,16 +55,19 @@ const SnippetPage: NextPage<NFT> = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps<NFTMetadataOwner> = async (
-  req
-) => {
+export const getServerSideProps: GetServerSideProps = async (req) => {
   const id = req.query.id as string;
-
-  const nft = await nftCollection.getWithOwner(id);
-
-  return {
-    props: nft,
-  };
+  try {
+    const nft = await nftCollection.getWithOwner(id);
+    return {
+      props: nft,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export default SnippetPage;

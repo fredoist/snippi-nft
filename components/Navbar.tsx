@@ -47,19 +47,21 @@ const Navbar = () => {
       });
       const res = await req.json();
 
-      if (res.error) {
-        alert(res.error);
+      if (!req.ok) {
+        console.error(res.error);
+        setIsLoading(false);
         return;
       } else {
         alert(`Successfully minted!`);
         setSnippet('');
         setCode({ html: '', css: '', js: '' });
         router.push(`/s/${res.id}`);
+        return;
       }
     } catch (error) {
       console.error('Error while minting your NFT', error);
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   return (
