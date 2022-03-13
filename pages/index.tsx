@@ -53,7 +53,6 @@ const IndexPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
         <div className="mx-auto grid max-w-7xl grid-cols-3 gap-6 pb-24 pt-12">
           {nfts.length > 0 &&
             nfts
-              .slice(0, 3)
               .map((nft: NFT) => <NFTCard key={nft.id} {...nft} />)}
         </div>
       </main>
@@ -64,11 +63,13 @@ const IndexPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
 export const getServerSideProps: GetServerSideProps<{
   nfts: NFTMetadata[];
 }> = async () => {
-  const nfts = await nftCollection.getAll();
-
-  return {
-    props: { nfts },
-  };
+  try {
+    const nfts = (await nftCollection.getAll()).slice(0, 3);
+    return { props: { nfts } };
+  } catch (error) {
+    console.error(error);
+    return { props: { nfts: [] } };
+  }
 };
 
 export default IndexPage;

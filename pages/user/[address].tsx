@@ -1,10 +1,8 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import Image from 'next/image';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
 import { nftCollection } from '@utils/thirdweb';
 import { NFT, NFTCard } from '@components/NFTCard';
-import { NFTMetadata } from '@3rdweb/sdk';
 import { useRouter } from 'next/router';
 
 const UserPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
@@ -37,16 +35,20 @@ const UserPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<{
-  nfts: NFTMetadata[];
-}> = async (req) => {
+export const getServerSideProps: GetServerSideProps = async (req) => {
   const address = req.query.address as string;
 
-  const nfts = await nftCollection.getOwned(address);
-
-  return {
-    props: { nfts },
-  };
+  try {
+    const nfts = await nftCollection.getOwned(address);
+    return {
+      props: { nfts },
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export default UserPage;

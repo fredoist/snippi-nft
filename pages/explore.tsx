@@ -3,7 +3,6 @@ import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
 import { nftCollection } from '@utils/thirdweb';
 import { NFT, NFTCard } from '@components/NFTCard';
-import { NFTMetadata } from '@3rdweb/sdk';
 
 const ExplorePage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
   return (
@@ -28,14 +27,18 @@ const ExplorePage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<{
-  nfts: NFTMetadata[];
-}> = async () => {
-  const nfts = await nftCollection.getAll();
-
-  return {
-    props: { nfts },
-  };
+export const getServerSideProps: GetServerSideProps = async () => {
+  try {
+    const nfts = await nftCollection.getAll();
+    return {
+      props: { nfts },
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      props: { nfts: [] },
+    };
+  }
 };
 
 export default ExplorePage;
