@@ -1,17 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useWeb3 } from '@3rdweb/hooks';
-import { PlusSmIcon, UserIcon } from '@heroicons/react/outline';
+import {
+  MenuIcon,
+  PlusSmIcon,
+  UserIcon,
+  XIcon,
+} from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
 import { useStore } from '@nanostores/react';
-import {
-  codeStore,
-  setCode,
-  setSnippet,
-  snippetStore,
-} from '@stores/playground';
-import React, { FormEventHandler, useState } from 'react';
-import { Dialog } from '@headlessui/react';
+import { codeStore, setCode, setSnippet } from '@stores/playground';
+import React, { useState } from 'react';
+import { Dialog, Popover } from '@headlessui/react';
 
 const Navbar = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -65,7 +65,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-sky-300/10 bg-slate-900/50 p-4 text-white backdrop-blur-md">
+    <header className="fixed top-0 z-40 w-full border-b border-sky-300/10 bg-slate-900/50 p-4 text-white backdrop-blur-3xl">
       <Dialog
         as="div"
         className="fixed inset-0 z-50 flex items-center justify-center"
@@ -104,19 +104,22 @@ const Navbar = () => {
           </form>
         </div>
       </Dialog>
-      <nav className="container mx-auto flex items-center justify-between">
-        <div className="grid grid-flow-col gap-4">
-          <Link href="/">
-            <a>
-              <Image
-                src="/assets/img/logo.svg"
-                alt="Snippi NFTs"
-                width={80}
-                height={22}
-              />
-              <span className="sr-only">Snippi NFTs</span>
-            </a>
-          </Link>
+      <Popover
+        as="nav"
+        className="container mx-auto flex items-center justify-between gap-4"
+      >
+        <Link href="/">
+          <a>
+            <Image
+              src="/assets/img/logo.svg"
+              alt="Snippi NFTs"
+              width={80}
+              height={22}
+            />
+            <span className="sr-only">Snippi NFTs</span>
+          </a>
+        </Link>
+        <div className="hidden flex-1 items-center gap-4 lg:flex">
           <Link href="/explore">
             <a>Explore</a>
           </Link>
@@ -135,10 +138,77 @@ const Navbar = () => {
             Twitter
           </a>
         </div>
-        <div className="grid grid-flow-col items-center gap-4">
+        <button
+          type="button"
+          className="hidden grid-flow-col gap-1 rounded-full border-2 border-sky-600/50 py-2 px-5 text-xs font-bold leading-none text-white transition-colors hover:bg-sky-600/20 focus:outline-none md:text-sm lg:grid"
+          onClick={() => {
+            if (router.pathname != '/new') {
+              router.push('/new');
+              return;
+            }
+            setIsOpen(true);
+          }}
+        >
+          <PlusSmIcon className="h-4 w-4" />
+          Mint NFT
+        </button>
+        {address ? (
+          <Link href="/user" as={`/user/${address}`}>
+            <a className="hidden grid-flow-col gap-1 rounded-full border-2 border-sky-600/50 py-2 px-5 text-xs font-bold leading-none text-white transition-colors hover:bg-sky-600/20 focus:outline-none md:text-sm lg:grid">
+              <UserIcon className="h-4 w-4" />
+              {address.slice(0, 16)}
+              <span className="text-xs font-normal">
+                ({balance?.formatted} MATIC)
+              </span>
+            </a>
+          </Link>
+        ) : (
           <button
             type="button"
-            className="grid grid-flow-col gap-1 rounded-full border-2 border-sky-600/50 py-2 px-5 text-sm font-bold leading-none text-white transition-colors hover:bg-sky-600/20 focus:outline-none"
+            onClick={() => connectWallet('injected')}
+            className="hidden grid-flow-col items-center gap-1 rounded-full bg-sky-700/50 py-2 px-5 text-xs font-bold leading-none text-white transition-colors hover:bg-sky-600/50 focus:outline-none md:text-sm lg:grid"
+          >
+            <Image
+              src="/assets/img/metamask-icon.svg"
+              alt="MetaMask"
+              width={18}
+              height={18}
+            />
+            Connect Wallet
+          </button>
+        )}
+        <Popover.Button className="lg:hidden">
+          <MenuIcon className="h-6 w-6" />
+          <span className="sr-only">Open main menu</span>
+        </Popover.Button>
+        <Popover.Panel className="absolute inset-x-0 top-0 bg-slate-900 px-8 py-4">
+          <Popover.Button className="float-right">
+            <XIcon className="h-6 w-6" />
+          </Popover.Button>
+          <div className="clear-both grid gap-4">
+            <Link href="/explore">
+              <a className="block py-2">Explore</a>
+            </Link>
+            <a
+              className="block py-2"
+              href="https://github.com/fredoist/snippi-nft"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Repository
+            </a>
+            <a
+              className="block py-2"
+              href="https://twitter.com/fredoist"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Twitter
+            </a>
+          </div>
+          <button
+            type="button"
+            className="my-4 flex w-full justify-center gap-1 rounded-full border-2 border-sky-600/50 py-2 px-5 text-xs font-bold leading-none text-white transition-colors hover:bg-sky-600/20 focus:outline-none md:text-sm"
             onClick={() => {
               if (router.pathname != '/new') {
                 router.push('/new');
@@ -152,7 +222,7 @@ const Navbar = () => {
           </button>
           {address ? (
             <Link href="/user" as={`/user/${address}`}>
-              <a className="grid grid-flow-col gap-1 rounded-full border-2 border-sky-600/50 py-2 px-5 text-sm font-bold leading-none text-white transition-colors hover:bg-sky-600/20 focus:outline-none">
+              <a className="my-4 flex w-full justify-center gap-1 rounded-full border-2 border-sky-600/50 py-2 px-5 text-xs font-bold leading-none text-white transition-colors hover:bg-sky-600/20 focus:outline-none md:text-sm">
                 <UserIcon className="h-4 w-4" />
                 {address.slice(0, 16)}
                 <span className="text-xs font-normal">
@@ -164,7 +234,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => connectWallet('injected')}
-              className="grid grid-flow-col items-center gap-1 rounded-full bg-sky-700/50 py-2 px-5 text-sm font-bold leading-none text-white transition-colors hover:bg-sky-600/50 focus:outline-none"
+              className="my-4 flex w-full items-center justify-center gap-1 rounded-full bg-sky-700/50 py-2 px-5 text-xs font-bold leading-none text-white transition-colors hover:bg-sky-600/50 focus:outline-none md:text-sm"
             >
               <Image
                 src="/assets/img/metamask-icon.svg"
@@ -175,8 +245,8 @@ const Navbar = () => {
               Connect Wallet
             </button>
           )}
-        </div>
-      </nav>
+        </Popover.Panel>
+      </Popover>
     </header>
   );
 };

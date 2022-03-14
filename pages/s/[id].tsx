@@ -27,12 +27,12 @@ const SnippetPage: NextPage<NFT> = ({
       <Navbar />
       <main
         role="main"
-        className="h-full w-full overflow-y-auto"
+        className="h-full w-full overflow-y-auto px-4 pt-12"
         style={{ height: 'calc(100vh - 70px)' }}
       >
         <div className="mx-auto my-24 w-full max-w-6xl text-center">
           <div className="mb-12">
-            <h1 className="mb-6 font-serif text-6xl font-bold">{name}</h1>
+            <h1 className="mb-6 font-serif text-3xl lg:text-6xl font-bold">{name}</h1>
             <p className="mb-5">{description}</p>
             <Link href="/user" as={`/user/${owner}`}>
               <a className="inline-block rounded-full bg-sky-700/50 py-2 px-5 text-sm font-bold leading-none text-white transition-colors hover:bg-sky-600/50">
@@ -47,7 +47,7 @@ const SnippetPage: NextPage<NFT> = ({
             loading="lazy"
             scrolling="no"
             frameBorder="0"
-            className="min-h-[600px] w-full overflow-hidden rounded-xl"
+            className="w-full overflow-hidden rounded-xl aspect-square"
           ></iframe>
         </div>
       </main>
