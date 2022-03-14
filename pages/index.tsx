@@ -1,5 +1,4 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import Image from 'next/image';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
 import Link from 'next/link';
@@ -10,33 +9,23 @@ import { NFTMetadata } from '@3rdweb/sdk';
 
 const IndexPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
   return (
-    <div className="min-h-screen w-full bg-slate-900 text-white">
+    <div className="min-h-fit w-full bg-slate-900 text-white">
       <SEO
         title="Interactive NFTs of frontend code snippets"
         description="A collection of interactive NFTs of frontend code snippets that render in your browser"
       />
       <Navbar />
-      <main role="main" className="group">
-        <div className="-z-10 overflow-hidden">
+      <main role="main" className="group px-4 pt-12">
+        <div className="-z-10 w-full overflow-hidden">
           <div className="pointer-events-none absolute -left-28 top-64 transform cursor-default transition-transform duration-700 group-hover:translate-y-8 group-hover:translate-x-4">
-            <Image
-              src="/assets/img/landing-blob-one.svg"
-              alt="blob"
-              width={704}
-              height={417}
-            />
+            <div className="h-80 w-72 rounded-full bg-sky-200/20 blur-3xl" />
           </div>
           <div className="pointer-events-none absolute right-0 top-0 transform cursor-default transition-transform duration-700 group-hover:-translate-y-12 group-hover:-translate-x-4">
-            <Image
-              src="/assets/img/landing-blob-two.svg"
-              alt="blob"
-              width={900}
-              height={600}
-            />
+            <div className="h-80 w-72 rounded-full bg-sky-200/20 blur-3xl" />
           </div>
         </div>
-        <div className="z-40 mx-auto my-24 max-w-5xl text-center">
-          <h1 className="mb-12 font-serif text-7xl font-bold leading-none">
+        <div className="z-40 mx-auto my-12 max-w-5xl text-center lg:my-24">
+          <h1 className="mb-6 text-3xl font-bold leading-none lg:mb-12 lg:text-7xl">
             The interactive NFT collection for frontend developers
           </h1>
           <p className="mb-5">
@@ -50,10 +39,9 @@ const IndexPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
             </a>
           </Link>
         </div>
-        <div className="mx-auto grid max-w-7xl grid-cols-3 gap-6 pb-24 pt-12">
+        <div className="mx-auto grid max-w-7xl gap-6 pb-24 pt-12 lg:grid-flow-col lg:grid-cols-3">
           {nfts.length > 0 &&
-            nfts
-              .map((nft: NFT) => <NFTCard key={nft.id} {...nft} />)}
+            nfts.map((nft: NFT) => <NFTCard key={nft.id} {...nft} />)}
         </div>
       </main>
     </div>
