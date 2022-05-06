@@ -2,10 +2,9 @@ import type { GetServerSideProps, NextPage } from 'next';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
 import { collection } from '@utils/thirdweb';
-import { NFTCard } from '@components/NFTCard';
-import { NFTMetadataOwner } from '@thirdweb-dev/sdk';
+import { NFTCard, NFTMetadata } from '@components/NFTCard';
 
-const ExplorePage: NextPage<{ nfts: NFTMetadataOwner[] }> = ({ nfts }) => {
+const ExplorePage: NextPage<{ nfts: NFTMetadata[] }> = ({ nfts }) => {
   return (
     <div className="min-h-screen w-full bg-slate-900 text-white">
       <SEO
