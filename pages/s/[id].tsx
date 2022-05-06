@@ -1,23 +1,13 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
-import { nftCollection } from '@utils/thirdweb';
+import { collection } from '@utils/thirdweb';
 import { IPFSToURI } from '@utils/IPFSToURI';
 import Link from 'next/link';
 import { UserIcon } from '@heroicons/react/outline';
+import { NFTMetadata } from '@components/NFTCard';
 
-type NFT = {
-  owner: string;
-  metadata: {
-    name: string;
-    description: string;
-    image: string;
-    uri: string;
-    file: string;
-  };
-};
-
-const SnippetPage: NextPage<NFT> = ({
+const SnippetPage: NextPage<NFTMetadata> = ({
   owner,
   metadata: { name, description, image, uri, file },
 }) => {
@@ -58,9 +48,10 @@ const SnippetPage: NextPage<NFT> = ({
 export const getServerSideProps: GetServerSideProps = async (req) => {
   const id = req.query.id as string;
   try {
-    const nft = await nftCollection.getWithOwner(id);
+    const nft = await collection.get(id)
+    const data = JSON.parse(JSON.stringify(nft))
     return {
-      props: nft,
+      props: data,
     };
   } catch (error) {
     console.error(error);

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { nftCollection } from '@utils/thirdweb';
+import { collection } from '@utils/thirdweb';
 import { generateSnippet } from '@utils/generateSnippet';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -18,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const file = Buffer.from(snippet);
 
   try {
-    const data = await nftCollection.mintTo(address, {
+    const data = await collection.mintTo(address, {
       name,
       description,
       file,

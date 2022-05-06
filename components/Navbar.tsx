@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useWeb3 } from '@3rdweb/hooks';
+import { useAddress, useMetamask } from '@thirdweb-dev/react';
 import {
   MenuIcon,
   PlusSmIcon,
@@ -16,7 +16,8 @@ import { Dialog, Popover } from '@headlessui/react';
 const Navbar = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const { address, balance, connectWallet } = useWeb3();
+  const address = useAddress();
+  const connectWallet = useMetamask();
   const router = useRouter();
   const code = useStore(codeStore);
 
@@ -27,7 +28,7 @@ const Navbar = () => {
     const { name, description } = target.elements as any;
 
     if (!address) {
-      connectWallet('injected');
+      connectWallet();
       setIsLoading(false);
       return;
     }
@@ -157,15 +158,12 @@ const Navbar = () => {
             <a className="hidden grid-flow-col gap-1 rounded-full border-2 border-sky-600/50 py-2 px-5 text-xs font-bold leading-none text-white transition-colors hover:bg-sky-600/20 focus:outline-none md:text-sm lg:grid">
               <UserIcon className="h-4 w-4" />
               {address.slice(0, 16)}
-              <span className="text-xs font-normal">
-                ({balance?.formatted} MATIC)
-              </span>
             </a>
           </Link>
         ) : (
           <button
             type="button"
-            onClick={() => connectWallet('injected')}
+            onClick={connectWallet}
             className="hidden grid-flow-col items-center gap-1 rounded-full bg-sky-700/50 py-2 px-5 text-xs font-bold leading-none text-white transition-colors hover:bg-sky-600/50 focus:outline-none md:text-sm lg:grid"
           >
             <Image
@@ -225,15 +223,12 @@ const Navbar = () => {
               <a className="my-4 flex w-full justify-center gap-1 rounded-full border-2 border-sky-600/50 py-2 px-5 text-xs font-bold leading-none text-white transition-colors hover:bg-sky-600/20 focus:outline-none md:text-sm">
                 <UserIcon className="h-4 w-4" />
                 {address.slice(0, 16)}
-                <span className="text-xs font-normal">
-                  ({balance?.formatted} MATIC)
-                </span>
               </a>
             </Link>
           ) : (
             <button
               type="button"
-              onClick={() => connectWallet('injected')}
+              onClick={connectWallet}
               className="my-4 flex w-full items-center justify-center gap-1 rounded-full bg-sky-700/50 py-2 px-5 text-xs font-bold leading-none text-white transition-colors hover:bg-sky-600/50 focus:outline-none md:text-sm"
             >
               <Image
