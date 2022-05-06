@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
 import Link from 'next/link';
@@ -48,7 +48,7 @@ const IndexPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<{
+export const getStaticProps: GetStaticProps<{
   nfts: NFTMetadata[];
 }> = async () => {
   try {
