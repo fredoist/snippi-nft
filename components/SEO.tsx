@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 type SEOProps = {
-  title: string;
+  title: string | undefined;
   description?: string;
   image?: string;
 };

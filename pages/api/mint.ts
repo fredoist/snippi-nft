@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { nftCollection } from '@utils/thirdweb';
+import { collection } from '@utils/thirdweb';
 import { generateSnippet } from '@utils/generateSnippet';
+import { IpfsStorage } from '@thirdweb-dev/sdk';
+import { BigNumber } from 'ethers';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
@@ -14,19 +16,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const snippet = generateSnippet(name, code);
-  const file = Buffer.from(snippet);
-
   try {
-    const data = await nftCollection.mintTo(address, {
+    const storage = new IpfsStorage();
+    const snippet = generateSnippet(name, code);
+    const file = await storage.upload(Buffer.from(snippet));
+    const data = await collection.mintTo(address, {
       name,
       description,
       file,
     });
-    res.status(200).json(data);
+    console.log('✅✅✅✅ Minted', data);
+    res.status(200).json({ id: BigNumber.from(data.id).toString() });
     return;
   } catch (error) {
-    console.error(error);
+    console.error('🚨🚨🚨🚨🚨 Error', error);
     res.status(500).json({ error });
     return;
   }

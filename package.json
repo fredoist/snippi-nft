@@ -11,9 +11,6 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@3rdweb/hooks": "1.9.2",
-    "@3rdweb/react": "1.9.3",
-    "@3rdweb/sdk": "1.38.0",
     "@codemirror/lang-css": "^0.19.3",
     "@codemirror/lang-html": "^0.19.4",
     "@codemirror/lang-javascript": "^0.19.7",
@@ -23,6 +20,8 @@
     "@heroicons/react": "^1.0.5",
     "@nanostores/persistent": "^0.5.1",
     "@nanostores/react": "^0.1.5",
+    "@thirdweb-dev/react": "2.2.6",
+    "@thirdweb-dev/sdk": "2.2.3",
     "@uiw/react-codemirror": "^4.3.3",
     "ethers": "5.5.3",
     "nanostores": "^0.5.8",

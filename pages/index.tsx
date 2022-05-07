@@ -1,13 +1,13 @@
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
 import Link from 'next/link';
 import { ArrowRightIcon } from '@heroicons/react/outline';
-import { nftCollection } from '@utils/thirdweb';
-import { NFT, NFTCard } from '@components/NFTCard';
-import { NFTMetadata } from '@3rdweb/sdk';
+import { collection } from '@utils/thirdweb';
+import { NFTCard } from '@components/NFTCard';
+import { NFTMetadata } from '@components/NFTCard';
 
-const IndexPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
+const IndexPage: NextPage<{ nfts: NFTMetadata[] }> = ({ nfts }) => {
   return (
     <div className="min-h-fit w-full bg-slate-900 text-white">
       <SEO
@@ -41,19 +41,20 @@ const IndexPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
         </div>
         <div className="mx-auto grid max-w-7xl gap-6 pb-24 pt-12 lg:grid-flow-col lg:grid-cols-3">
           {nfts.length > 0 &&
-            nfts.map((nft: NFT) => <NFTCard key={nft.id} {...nft} />)}
+            nfts.map((nft) => <NFTCard key={Number(nft.metadata.id)} nft={nft} />)}
         </div>
       </main>
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps<{
+export const getStaticProps: GetStaticProps<{
   nfts: NFTMetadata[];
 }> = async () => {
   try {
-    const nfts = (await nftCollection.getAll()).slice(0, 3);
-    return { props: { nfts } };
+    const nfts = await collection.getAll({ count: 3, start: 0 });
+    const data = JSON.parse(JSON.stringify(nfts));
+    return { props: { nfts: data } };
   } catch (error) {
     console.error(error);
     return { props: { nfts: [] } };

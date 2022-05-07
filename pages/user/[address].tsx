@@ -1,11 +1,11 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
-import { nftCollection } from '@utils/thirdweb';
-import { NFT, NFTCard } from '@components/NFTCard';
+import { collection } from '@utils/thirdweb';
+import { NFTCard, NFTMetadata } from '@components/NFTCard';
 import { useRouter } from 'next/router';
 
-const UserPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
+const UserPage: NextPage<{ nfts: NFTMetadata[] }> = ({ nfts }) => {
   const router = useRouter();
   const address = router.query.address as string;
 
@@ -28,7 +28,7 @@ const UserPage: NextPage<{ nfts: NFT[] }> = ({ nfts }) => {
         </div>
         <div className="mx-auto grid max-w-7xl grid-flow-row lg:grid-cols-3 gap-6 pb-24 pt-12">
           {nfts.length > 0 &&
-            nfts.map((nft: NFT) => <NFTCard key={nft.id} {...nft} />)}
+            nfts.map((nft) => <NFTCard key={Number(nft.metadata.id)} nft={nft} />)}
         </div>
       </main>
     </div>
@@ -39,9 +39,10 @@ export const getServerSideProps: GetServerSideProps = async (req) => {
   const address = req.query.address as string;
 
   try {
-    const nfts = await nftCollection.getOwned(address);
+    const nfts = await collection.getOwned(address);
+    const data = JSON.parse(JSON.stringify(nfts));
     return {
-      props: { nfts },
+      props: { nfts: data },
     };
   } catch (error) {
     console.error(error);

@@ -1,15 +1,15 @@
-import { ThirdwebSDK } from '@3rdweb/sdk';
+import { ThirdwebSDK } from '@thirdweb-dev/sdk';
 import { ethers } from 'ethers';
 
-const sdk = new ThirdwebSDK(
-  new ethers.Wallet(
-    process.env.METAMASK_PRIVATE_KEY as string,
-    ethers.getDefaultProvider('https://rpc-mumbai.maticvigil.com')
-  )
+const rpcUrl = 'https://rpc-mumbai.maticvigil.com';
+
+const wallet = new ethers.Wallet(
+  process.env.PRIVATE_KEY as string,
+  ethers.getDefaultProvider(rpcUrl)
 );
 
-const nftCollection = sdk.getNFTModule(
-  process.env.NFT_COLLECTION_ADDRESS as string
-);
+const collectionAddress = '0x6c346ebaDe85bbFb54D1acA2aF83d756D3F8af61';
 
-export { sdk, nftCollection };
+const collection = new ThirdwebSDK(wallet).getNFTCollection(collectionAddress);
+
+export { wallet, collectionAddress, collection }
