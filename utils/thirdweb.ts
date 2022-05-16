@@ -8,7 +8,7 @@ const wallet = new ethers.Wallet(
   ethers.getDefaultProvider(rpcUrl)
 );
 
-const collectionAddress = '0x6c346ebaDe85bbFb54D1acA2aF83d756D3F8af61';
+const collectionAddress = process.env.COLLECTION_ADDRESS as string;
 
 const collection = new ThirdwebSDK(wallet).getNFTCollection(collectionAddress);
 
