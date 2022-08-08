@@ -1,3 +1,7 @@
 export const IPFSToURI = (uri: string): string => {
-  return uri.replace('ipfs://', 'https://cloudflare-ipfs.com/ipfs/');
+  if (uri && uri.startsWith('ipfs://')) {
+    return uri.replace('ipfs://', 'https://cloudflare-ipfs.com/ipfs/');
+  } else {
+    return uri;
+  }
 };
