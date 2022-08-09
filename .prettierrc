@@ -1,13 +1,16 @@
 {
-  "semi": true,
+  "semi": false,
   "useTabs": false,
   "singleQuote": true,
-  "trailingComma": "es5",
+  "trailingComma": "none",
   "tabWidth": 2,
-  "printWidth": 80,
+  "printWidth": 100,
   "endOfLine": "lf",
-  "arrowParens": "always",
+  "arrowParens": "avoid",
   "jsxSingleQuote": false,
-  "proseWrap": "always",
+  "proseWrap": "preserve",
+  "bracketSameLine": true,
+  "bracketSpacing": true,
+  "singleAttributePerLine": true,
   "tailwindConfig": "./tailwind.config.js"
 }
