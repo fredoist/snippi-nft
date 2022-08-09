@@ -11,25 +11,24 @@ export type NFTMetadata = NFTMetadataOwner & {
 
 const NFTCard = ({ nft: { metadata: nft } }: { nft: NFTMetadata }) => {
   return (
-    <Link href="/s" as={`/s/${BigNumber.from(nft.id)}`}>
-      <a className="cursor-pointer">
-        <div className="w-full overflow-hidden rounded-xl border border-sky-400/10 bg-slate-800/50 shadow-xl shadow-slate-800/10 backdrop-blur-md transition hover:-translate-y-1 hover:bg-slate-800/90">
+    <Link href="/s" as={`/s/${BigNumber.from(nft.id)}`} passHref>
+      <div className="cursor-pointer w-full h-full overflow-hidden rounded-xl shadow transition duration-75 ease-in hover:-translate-y-1 hover:shadow-lg ring-1 ring-black/5">
+        <div className="relative aspect-square w-full overflow-hidden rounded-t-xl border-0 before:content-[''] before:absolute before:inset-0">
           <iframe
             src={IPFSToURI(nft.file)}
             title={nft.name}
             loading="lazy"
             scrolling="no"
-            frameBorder="0"
-            className="aspect-square w-full overflow-hidden rounded-lg"
-          ></iframe>
-          <div className="p-4">
-            <span className="mb-2 block font-bold">{nft.name}</span>
-            <span className="block overflow-hidden text-ellipsis text-sm">
-              {nft.description}
-            </span>
-          </div>
+            className="w-full h-full overflow-hidden"
+          />
         </div>
-      </a>
+        <div className="p-4">
+          <span className="mb-2 block font-bold">{nft.name}</span>
+          <span className="block overflow-hidden text-ellipsis text-sm">
+            {nft.description}
+          </span>
+        </div>
+      </div>
     </Link>
   );
 };
