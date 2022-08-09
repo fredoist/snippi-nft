@@ -44,9 +44,7 @@ const IndexPage: NextPage<{ nfts: NFTMetadata[] }> = ({ nfts }) => {
         description="A collection of interactive NFTs of frontend code snippets that render in your browser"
       />
       <Navbar headerHeight={headerHeight} />
-      <div
-        ref={headerRef}
-        className="relative bg-black px-5 py-40">
+      <div ref={headerRef} className="relative bg-black px-5 py-40">
         <h1 className="relative z-10 mx-auto mb-12 max-w-4xl text-center text-3xl font-bold text-white mix-blend-difference md:text-5xl lg:text-6xl">
           Turn your code snippets into non-fungible tokens
         </h1>
@@ -75,18 +73,9 @@ const IndexPage: NextPage<{ nfts: NFTMetadata[] }> = ({ nfts }) => {
           />
         </div>
       </div>
-      <main
-        ref={collectionRef}
-        role="main"
-        className="group px-4 pt-12">
+      <main ref={collectionRef} role="main" className="group px-4 pt-12">
         <div className="mx-auto grid max-w-7xl gap-6 pb-24 pt-12 lg:grid-cols-3">
-          {nfts.length > 0 &&
-            nfts.map(nft => (
-              <NFTCard
-                key={Number(nft.metadata.id)}
-                nft={nft}
-              />
-            ))}
+          {nfts.length > 0 && nfts.map(nft => <NFTCard key={Number(nft.metadata.id)} nft={nft} />)}
         </div>
       </main>
     </React.Fragment>

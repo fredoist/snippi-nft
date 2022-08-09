@@ -11,10 +11,7 @@ export type NFTMetadata = NFTMetadataOwner & {
 
 const NFTCard = ({ nft: { metadata: nft } }: { nft: NFTMetadata }) => {
   return (
-    <Link
-      href="/s"
-      as={`/s/${BigNumber.from(nft.id)}`}
-      passHref>
+    <Link href="/s" as={`/s/${BigNumber.from(nft.id)}`} passHref>
       <div className="h-full w-full cursor-pointer overflow-hidden rounded-xl shadow ring-1 ring-black/5 transition duration-75 ease-in hover:-translate-y-1 hover:shadow-lg">
         <div className="relative aspect-square w-full overflow-hidden rounded-t-xl border-0 before:absolute before:inset-0 before:content-['']">
           <iframe

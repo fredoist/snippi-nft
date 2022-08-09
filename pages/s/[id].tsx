@@ -13,10 +13,7 @@ const SnippetPage: NextPage<NFTMetadata> = ({
 }) => {
   return (
     <div className="min-h-screen w-full overflow-hidden bg-slate-900 text-white">
-      <SEO
-        title={name}
-        description={description ? description.substring(0, 160) : ''}
-      />
+      <SEO title={name} description={description ? description.substring(0, 160) : ''} />
       <Navbar />
       <main
         role="main"
@@ -26,9 +23,7 @@ const SnippetPage: NextPage<NFTMetadata> = ({
           <div className="mb-12">
             <h1 className="mb-6 font-serif text-3xl font-bold lg:text-6xl">{name}</h1>
             <p className="mb-5">{description}</p>
-            <Link
-              href="/user"
-              as={`/user/${owner}`}>
+            <Link href="/user" as={`/user/${owner}`}>
               <a className="inline-block rounded-full bg-sky-700/50 py-2 px-5 text-sm font-bold leading-none text-white transition-colors hover:bg-sky-600/50">
                 <UserIcon className="float-left mr-2 h-4 w-4" />
                 {owner.slice(0, 16)}

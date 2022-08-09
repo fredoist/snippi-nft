@@ -39,9 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ headerHeight = 0 }) => {
             <span className="text-lg font-bold">Snippi</span>
           </a>
         </Link>
-        <Menu
-          as="div"
-          className="relative font-medium">
+        <Menu as="div" className="relative font-medium">
           {({ open }) => (
             <React.Fragment>
               <Menu.Button className="inline-flex items-center gap-2 rounded p-2 transition-colors hover:bg-white/40 hover:ring-1 hover:ring-white/50">
@@ -54,17 +52,11 @@ const Navbar: React.FC<NavbarProps> = ({ headerHeight = 0 }) => {
               </Menu.Button>
               <Menu.Items className="absolute right-0 mt-2 origin-top-right overflow-hidden rounded bg-white text-black shadow-xl">
                 {address ? (
-                  <Menu.Item
-                    as="button"
-                    className="p-2"
-                    onClick={disconnectWallet}>
+                  <Menu.Item as="button" className="p-2" onClick={disconnectWallet}>
                     Disconnect
                   </Menu.Item>
                 ) : (
-                  <Menu.Item
-                    as="button"
-                    className="p-2"
-                    onClick={connectMetamask}>
+                  <Menu.Item as="button" className="p-2" onClick={connectMetamask}>
                     MetaMask
                   </Menu.Item>
                 )}

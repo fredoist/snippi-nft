@@ -11,6 +11,5 @@
   "proseWrap": "preserve",
   "bracketSameLine": true,
   "bracketSpacing": true,
-  "singleAttributePerLine": true,
   "tailwindConfig": "./tailwind.config.js"
 }

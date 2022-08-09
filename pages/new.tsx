@@ -35,9 +35,7 @@ const NewPage: NextPage = () => {
     <div className="h-screen w-full overflow-hidden bg-black pt-20">
       <SEO title="New NFT" />
       <Navbar />
-      <main
-        role="main"
-        className="container mx-auto h-full">
+      <main role="main" className="container mx-auto h-full">
         <div className="z-40 flex h-2/5 border-b-8 border-b-black">
           <CodeMirror
             value={code.html}
