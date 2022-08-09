@@ -1,12 +1,12 @@
-import React from 'react';
-import type { GetStaticProps, NextPage } from 'next';
-import SEO from '@components/SEO';
-import Navbar from '@components/Navbar';
-import Link from 'next/link';
-import { CodeIcon, ViewGridIcon } from '@heroicons/react/outline';
-import { collection } from '@utils/thirdweb';
-import { NFTCard } from '@components/NFTCard';
-import { NFTMetadata } from '@components/NFTCard';
+import React from 'react'
+import type { GetStaticProps, NextPage } from 'next'
+import SEO from '@components/SEO'
+import Navbar from '@components/Navbar'
+import Link from 'next/link'
+import { CodeIcon, ViewGridIcon } from '@heroicons/react/outline'
+import { collection } from '@utils/thirdweb'
+import { NFTCard } from '@components/NFTCard'
+import { NFTMetadata } from '@components/NFTCard'
 
 /**
  * @todo: replace for a remote origin
@@ -14,28 +14,28 @@ import { NFTMetadata } from '@components/NFTCard';
 const NFTS = [
   'https://gateway.ipfscdn.io/ipfs/QmVaFpu48wJmCsubRJFdznkWVBdqTDw1NLkMqZeo4ZxPHg/0',
   'https://gateway.ipfscdn.io/ipfs/QmPDzNEnL1XgZu8qcxYhmMqucqkQMBfuXPeM2UCer4cZCP/0',
-  'https://gateway.ipfscdn.io/ipfs/QmTfykVZu1yDKnpGuvZenUsXtY2bCSuHB9AE3DoJeXBMKj/0',
-];
+  'https://gateway.ipfscdn.io/ipfs/QmTfykVZu1yDKnpGuvZenUsXtY2bCSuHB9AE3DoJeXBMKj/0'
+]
 
 const IndexPage: NextPage<{ nfts: NFTMetadata[] }> = ({ nfts }) => {
-  const headerRef = React.useRef<HTMLDivElement | null>(null);
-  const collectionRef = React.useRef<HTMLDivElement | null>(null);
-  const [headerHeight, setHeaderHeight] = React.useState(0);
-  const randomNFT = NFTS[Math.floor(Math.random() * NFTS.length)];
+  const headerRef = React.useRef<HTMLDivElement | null>(null)
+  const collectionRef = React.useRef<HTMLDivElement | null>(null)
+  const [headerHeight, setHeaderHeight] = React.useState(0)
+  const randomNFT = NFTS[Math.floor(Math.random() * NFTS.length)]
 
   React.useEffect(() => {
     if (headerRef.current) {
-      setHeaderHeight(headerRef.current.clientHeight);
+      setHeaderHeight(headerRef.current.clientHeight)
     }
-  }, [headerRef]);
+  }, [headerRef])
 
   React.useEffect(() => {
     if (collectionRef.current) {
       if (window.location.pathname === '/collection') {
-        collectionRef.current.scrollIntoView({ behavior: 'smooth' });
+        collectionRef.current.scrollIntoView({ behavior: 'smooth' })
       }
     }
-  }, [collectionRef]);
+  }, [collectionRef])
 
   return (
     <React.Fragment>
@@ -44,7 +44,9 @@ const IndexPage: NextPage<{ nfts: NFTMetadata[] }> = ({ nfts }) => {
         description="A collection of interactive NFTs of frontend code snippets that render in your browser"
       />
       <Navbar headerHeight={headerHeight} />
-      <div ref={headerRef} className="relative bg-black px-5 py-40">
+      <div
+        ref={headerRef}
+        className="relative bg-black px-5 py-40">
         <h1 className="relative z-10 mx-auto mb-12 max-w-4xl text-center text-3xl font-bold text-white mix-blend-difference md:text-5xl lg:text-6xl">
           Turn your code snippets into non-fungible tokens
         </h1>
@@ -73,29 +75,35 @@ const IndexPage: NextPage<{ nfts: NFTMetadata[] }> = ({ nfts }) => {
           />
         </div>
       </div>
-      <main ref={collectionRef} role="main" className="group px-4 pt-12">
+      <main
+        ref={collectionRef}
+        role="main"
+        className="group px-4 pt-12">
         <div className="mx-auto grid max-w-7xl gap-6 pb-24 pt-12 lg:grid-cols-3">
           {nfts.length > 0 &&
-            nfts.map((nft) => (
-              <NFTCard key={Number(nft.metadata.id)} nft={nft} />
+            nfts.map(nft => (
+              <NFTCard
+                key={Number(nft.metadata.id)}
+                nft={nft}
+              />
             ))}
         </div>
       </main>
     </React.Fragment>
-  );
-};
+  )
+}
 
 export const getStaticProps: GetStaticProps<{
-  nfts: NFTMetadata[];
+  nfts: NFTMetadata[]
 }> = async () => {
   try {
-    const nfts = await collection.getAll();
-    const data = JSON.parse(JSON.stringify(nfts));
-    return { props: { nfts: data } };
+    const nfts = await collection.getAll()
+    const data = JSON.parse(JSON.stringify(nfts))
+    return { props: { nfts: data } }
   } catch (error) {
-    console.error(error);
-    return { props: { nfts: [] } };
+    console.error(error)
+    return { props: { nfts: [] } }
   }
-};
+}
 
-export default IndexPage;
+export default IndexPage

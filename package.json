@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier -w ."
+    "format": "prettier -w . --ignore-path .gitignore"
   },
   "dependencies": {
     "@codemirror/lang-css": "^6.0.0",

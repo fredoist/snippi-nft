@@ -5,8 +5,8 @@ module.exports = {
     return [
       {
         source: '/collection',
-        destination: '/',
-      },
-    ];
-  },
-};
+        destination: '/'
+      }
+    ]
+  }
+}

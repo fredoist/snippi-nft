@@ -1,4 +1,4 @@
-import type { Snippet } from '@stores/playground';
+import type { Snippet } from '@stores/playground'
 
 const generateSnippet = (title: string, code: Snippet) => {
   return `<!DOCTYPE html>
@@ -16,7 +16,7 @@ const generateSnippet = (title: string, code: Snippet) => {
         <script>
           ${code.js}
         </script>
-      </body>`;
-};
+      </body>`
+}
 
-export { generateSnippet };
+export { generateSnippet }
