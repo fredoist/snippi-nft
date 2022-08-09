@@ -15,7 +15,7 @@ const SnippetPage: NextPage<NFTMetadata> = ({
     <div className="min-h-screen w-full overflow-hidden bg-slate-900 text-white">
       <SEO
         title={name}
-        description={description}
+        description={description ? description.substring(0, 160) : ''}
       />
       <Navbar />
       <main

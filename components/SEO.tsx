@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 type SEOProps = {
   title: string | undefined
-  description?: string
+  description?: string | undefined
   image?: string
 }
 
@@ -21,7 +21,7 @@ const SEO = ({ title, description, image }: SEOProps) => {
       <title>{title} — Snippi NFTs</title>
       <link
         rel="icon"
-        href="/icon.svg"
+        href="/favicon.svg"
         type="image/svg+xml"
       />
       <link
