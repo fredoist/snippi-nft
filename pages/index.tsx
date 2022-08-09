@@ -1,50 +1,61 @@
+import React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
 import Link from 'next/link';
-import { ArrowRightIcon } from '@heroicons/react/outline';
+import { ArrowRightIcon, CodeIcon, ViewGridIcon } from '@heroicons/react/outline';
 import { collection } from '@utils/thirdweb';
 import { NFTCard } from '@components/NFTCard';
 import { NFTMetadata } from '@components/NFTCard';
 
+/**
+ * @todo: replace for a remote origin
+ */
+const NFTS = [
+  'https://gateway.ipfscdn.io/ipfs/QmVaFpu48wJmCsubRJFdznkWVBdqTDw1NLkMqZeo4ZxPHg/0',
+  'https://gateway.ipfscdn.io/ipfs/QmPDzNEnL1XgZu8qcxYhmMqucqkQMBfuXPeM2UCer4cZCP/0',
+  'https://gateway.ipfscdn.io/ipfs/QmTfykVZu1yDKnpGuvZenUsXtY2bCSuHB9AE3DoJeXBMKj/0',
+];
+
 const IndexPage: NextPage<{ nfts: NFTMetadata[] }> = ({ nfts }) => {
+  const randomNFT = NFTS[Math.floor(Math.random() * NFTS.length)];
+
   return (
-    <div className="min-h-fit w-full bg-slate-900 text-white">
+    <React.Fragment>
       <SEO
         title="Interactive NFTs of frontend code snippets"
         description="A collection of interactive NFTs of frontend code snippets that render in your browser"
       />
       <Navbar />
+      <div className="relative bg-black px-5 py-40">
+        <h1 className="relative z-10 mx-auto max-w-4xl text-center text-3xl font-bold text-white mix-blend-difference md:text-5xl lg:text-6xl mb-12">
+          Turn your code snippets into non-fungible tokens
+        </h1>
+        <div className="relative z-10">
+          <div className="flex items-center gap-4 max-w-max mx-auto">
+            <button className="bg-white/40 font-medium text-white rounded-lg p-4 inline-flex items-center gap-2 justify-between ring-1 ring-white/80 hover:bg-white/50 transition-colors group">
+              <ViewGridIcon className="h-5 w-5" />
+              <span>Explore Collection</span>
+            </button>
+            <button className="bg-white/40 font-medium text-white rounded-lg p-4 inline-flex items-center gap-2 justify-between ring-1 ring-white/80 hover:bg-white/50 transition-colors group">
+              <CodeIcon className="h-5 w-5" />
+              <span>Create Your Own</span>
+            </button>
+          </div>
+        </div>
+        <div className="absolute inset-0 overflow-hidden">
+          <iframe className="h-full w-full object-cover overflow-hidden" src={randomNFT} loading="eager" scrolling="no" />
+        </div>
+      </div>
       <main role="main" className="group px-4 pt-12">
-        <div className="-z-10 w-full overflow-hidden">
-          <div className="pointer-events-none absolute -left-28 top-64 transform cursor-default transition-transform duration-700 group-hover:translate-y-8 group-hover:translate-x-4">
-            <div className="h-80 w-72 rounded-full bg-sky-200/20 blur-3xl" />
-          </div>
-          <div className="pointer-events-none absolute right-0 top-0 transform cursor-default transition-transform duration-700 group-hover:-translate-y-12 group-hover:-translate-x-4">
-            <div className="h-80 w-72 rounded-full bg-sky-200/20 blur-3xl" />
-          </div>
-        </div>
-        <div className="z-40 mx-auto my-12 max-w-5xl text-center lg:my-24">
-          <h1 className="mb-6 text-3xl font-bold leading-none lg:mb-12 lg:text-7xl">
-            The interactive NFT collection for frontend developers
-          </h1>
-          <p className="mb-5">
-            Snippi NFTs is a collection of interactive NFTs of frontend code
-            snippets.
-          </p>
-          <Link href="/new">
-            <a className="inline-block rounded-full bg-sky-400/50 py-2 px-5 text-sm font-bold leading-none text-white transition-colors hover:bg-sky-400/80 focus:outline-none">
-              Mint yours from the playground
-              <ArrowRightIcon className="float-right ml-2 h-4 w-4" />
-            </a>
-          </Link>
-        </div>
-        <div className="mx-auto grid max-w-7xl gap-6 pb-24 pt-12 lg:grid-flow-col lg:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl gap-6 pb-24 pt-12 lg:grid-cols-3">
           {nfts.length > 0 &&
-            nfts.map((nft) => <NFTCard key={Number(nft.metadata.id)} nft={nft} />)}
+            nfts.map((nft) => (
+              <NFTCard key={Number(nft.metadata.id)} nft={nft} />
+            ))}
         </div>
       </main>
-    </div>
+    </React.Fragment>
   );
 };
 
@@ -52,7 +63,7 @@ export const getStaticProps: GetStaticProps<{
   nfts: NFTMetadata[];
 }> = async () => {
   try {
-    const nfts = await collection.getAll({ count: 3, start: 0 });
+    const nfts = await collection.getAll();
     const data = JSON.parse(JSON.stringify(nfts));
     return { props: { nfts: data } };
   } catch (error) {
