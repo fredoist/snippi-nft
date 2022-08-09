@@ -37,19 +37,15 @@ const NewPage: NextPage = () => {
   }, [code]);
 
   return (
-    <div className="h-screen w-full overflow-hidden bg-slate-900 text-white">
+    <div className="h-screen w-full overflow-hidden bg-black pt-20">
       <SEO title="New NFT" />
       <Navbar />
-      <main
-        role="main"
-        className="container mx-auto"
-        style={{ height: 'calc(100% - 70px)' }}
-      >
-        <div className="z-40 flex h-2/5 border-b-8 border-b-cyan-600/10">
+      <main role="main" className="container mx-auto h-full">
+        <div className="z-40 flex h-2/5 border-b-8 border-b-black">
           <CodeMirror
             value={code.html}
             placeholder="HTML"
-            className="h-full w-1/3 border-r-2 border-r-sky-600/10"
+            className="h-full w-1/3 border-r-2 border-r-black"
             width="100%"
             theme="dark"
             height="100%"
@@ -59,7 +55,7 @@ const NewPage: NextPage = () => {
           <CodeMirror
             value={code.css}
             placeholder="CSS"
-            className="h-full w-1/3 border-r-2 border-r-sky-600/10"
+            className="h-full w-1/3 border-r-2 border-r-black"
             width="100%"
             theme="dark"
             height="100%"
@@ -81,7 +77,8 @@ const NewPage: NextPage = () => {
           <iframe
             ref={frameRef}
             frameBorder="0"
-            className="h-full w-full"
+            className="h-full w-full overflow-hidden"
+            scrolling="no"
           ></iframe>
         </div>
       </main>

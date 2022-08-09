@@ -3,11 +3,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import SEO from '@components/SEO';
 import Navbar from '@components/Navbar';
 import Link from 'next/link';
-import {
-  ArrowRightIcon,
-  CodeIcon,
-  ViewGridIcon,
-} from '@heroicons/react/outline';
+import { CodeIcon, ViewGridIcon } from '@heroicons/react/outline';
 import { collection } from '@utils/thirdweb';
 import { NFTCard } from '@components/NFTCard';
 import { NFTMetadata } from '@components/NFTCard';

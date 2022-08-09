@@ -5,10 +5,10 @@ import React, { useState } from 'react';
 import { Menu } from '@headlessui/react';
 
 type NavbarProps = {
-  headerHeight: number;
+  headerHeight?: number;
 };
 
-const Navbar: React.FC<NavbarProps> = ({ headerHeight }) => {
+const Navbar: React.FC<NavbarProps> = ({ headerHeight = 0 }) => {
   const [isScrollPastHeader, setIsScrollPastHeader] = useState(false);
   const connectMetamask = useMetamask();
   const disconnectWallet = useDisconnect();

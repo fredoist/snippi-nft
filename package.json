@@ -14,8 +14,6 @@
     "@codemirror/lang-css": "^0.19.3",
     "@codemirror/lang-html": "^0.19.4",
     "@codemirror/lang-javascript": "^0.19.7",
-    "@fontsource/inter": "^4.5.2",
-    "@fontsource/montserrat": "^4.5.3",
     "@headlessui/react": "^1.4.3",
     "@heroicons/react": "^1.0.5",
     "@nanostores/persistent": "^0.5.1",
