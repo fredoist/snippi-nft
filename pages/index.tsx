@@ -44,27 +44,27 @@ const IndexPage: NextPage<{ nfts: NFTMetadata[] }> = ({ nfts }) => {
         description="A collection of interactive NFTs of frontend code snippets that render in your browser"
       />
       <Navbar headerHeight={headerHeight} />
-      <div ref={headerRef} className="relative bg-black px-5 py-40">
-        <h1 className="relative z-10 mx-auto mb-12 max-w-4xl text-center text-3xl font-bold text-white mix-blend-difference md:text-5xl lg:text-6xl">
+      <div ref={headerRef} className="relative bg-black px-5 py-24 md:py-32 lg:py-48">
+        <h1 className="relative z-10 mx-auto mb-8 md:mb-12 max-w-4xl text-center text-2xl sm:text-3xl font-bold text-white mix-blend-difference md:text-5xl lg:text-6xl">
           Turn your code snippets into non-fungible tokens
         </h1>
         <div className="relative z-10">
-          <div className="mx-auto flex max-w-max items-center gap-4 mix-blend-difference">
+          <div className="mx-auto flex flex-col md:flex-row max-w-max items-center gap-4">
             <Link href="/collection">
-              <a className="group inline-flex items-center justify-between gap-2 rounded-lg bg-white/40 p-4 font-medium text-white ring-1 ring-white/50 transition-colors hover:bg-white/50 hover:ring-white/80">
+              <a className="relative z-10 w-full whitespace-nowrap group inline-flex items-center justify-between gap-2 rounded-lg bg-white/40 p-4 font-medium text-white ring-1 ring-white/50 transition-colors hover:bg-white/50 hover:ring-white/80 backdrop-blur">
                 <ViewGridIcon className="h-5 w-5 transition-transform duration-100 ease-in-out group-hover:-rotate-45 group-hover:scale-110" />
                 <span>Explore Collection</span>
               </a>
             </Link>
             <Link href="/new">
-              <a className="group inline-flex items-center justify-between gap-2 rounded-lg bg-white/40 p-4 font-medium text-white ring-1 ring-white/50 transition-colors hover:bg-white/50 hover:ring-white/80">
+              <a className="relative z-10 w-full whitespace-nowrap group inline-flex items-center justify-between gap-2 rounded-lg bg-white/40 p-4 font-medium text-white ring-1 ring-white/50 transition-colors hover:bg-white/50 hover:ring-white/80 backdrop-blur">
                 <CodeIcon className="h-5 w-5 transition-transform duration-100 ease-in-out group-hover:-rotate-45 group-hover:scale-110" />
                 <span>Create Your Own</span>
               </a>
             </Link>
           </div>
         </div>
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden z-0">
           <iframe
             className="h-full w-full overflow-hidden object-cover"
             src={randomNFT}
@@ -75,7 +75,7 @@ const IndexPage: NextPage<{ nfts: NFTMetadata[] }> = ({ nfts }) => {
       </div>
       <main ref={collectionRef} role="main" className="group px-4 pt-12">
         <div className="mx-auto grid max-w-7xl gap-6 pb-24 pt-12 lg:grid-cols-3">
-          {nfts.length > 0 && nfts.map(nft => <NFTCard key={Number(nft.metadata.id)} nft={nft} />)}
+          {nfts.length > 0 && nfts.map((nft, index) => <NFTCard key={index} nft={nft} />)}
         </div>
       </main>
     </React.Fragment>
