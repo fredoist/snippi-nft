@@ -46,10 +46,12 @@ const IndexPage: NextPage<{ data: NFTMetadata[] }> = ({ data }) => {
       // when scroll reach end of page load more nfts from client
       if ((window.scrollY + window.innerHeight)  >= document.body.offsetHeight - 500) {
         const totalSupply = await collection?.totalSupply();
-        if(totalSupply && nfts.length < totalSupply?.toNumber()) {
+        if (totalSupply && nfts.length < totalSupply?.toNumber()) {
           setIsLoading(true)
+        } else {
+          return;
         }
-        
+
         const data = (await collection?.getAll({
           count: 3,
           start: nfts.length + 1
