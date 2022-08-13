@@ -31,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ headerHeight = 0 }) => {
       className={`fixed inset-x-0 top-0 z-50 p-5 ${
         isScrollPastHeader
           ? 'border-b border-b-white/20 bg-white/40 shadow-sm backdrop-blur-xl'
-          : 'text-white mix-blend-difference'
+          : 'text-white bg-gradient-to-b from-black/40 via-black/20 to-transparent'
       }`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         <Link href="/collection">
